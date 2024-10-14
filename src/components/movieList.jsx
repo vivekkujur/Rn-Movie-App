@@ -3,14 +3,15 @@ import React from 'react'
 import { styles } from '../../theme'
 import { ScrollView, TouchableWithoutFeedback } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
+import { image185 } from '../api/moviedb'
 
 
 const { width, height } = Dimensions.get('window');
 
 const MovieList = ({ title, data, hideSeeAll }) => {
 
-  let movieName = 'Ant man and wasp ';
   const navigation = useNavigation();
+
 
 
   return (
@@ -43,14 +44,15 @@ const MovieList = ({ title, data, hideSeeAll }) => {
 
                 <View className="space-y-1 mr-5">
                   <Image
-                    source={require('../../assets/images/poster4.jpg')}
+                    source={{uri :image185(item.poster_path) }}
                     className='rounded-3xl'
                     style={{ height: height * .22, width: width * .33 }}
 
                   />
-                  <Text className=' text-white ml-2'>
-                    {movieName.length > 14 ? movieName.slice(0, 14) + '...' : movieName}
-                  </Text>
+                  {item.title && <Text className=' text-white ml-2'>
+                    {item.title.length > 14 ? item.title.slice(0, 14) + '...' : item.title}
+                  </Text>}
+                  
                 </View>
 
               </TouchableWithoutFeedback>
