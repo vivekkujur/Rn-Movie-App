@@ -7,6 +7,8 @@ const trendingMoviesEndPoint = `${apiBaseUrl}/trending/movie/day?language=en-US&
 const upcomingMoviesEndPoint = `${apiBaseUrl}/movie/upcoming?language=en-US&page=1&api_key=${apikey}`
 const topRatedMoviesEndPoint = `${apiBaseUrl}/movie/top_rated?language=en-US&page=1&api_key=${apikey}`
 const movieDetailsEndPoint = movieId =>movieId? `${apiBaseUrl}/movie/${movieId}?language=en-US&api_key=${apikey}`:""
+const movieCreditEndPoint = movieId =>movieId? `${apiBaseUrl}/movie/${movieId}/credits?language=en-US&api_key=${apikey}`:""
+const similerMovieEndPoint = movieId =>movieId? `${apiBaseUrl}/movie/${movieId}/similar?language=en-US&api_key=${apikey}`:""
 
 
 export const image500 = path => path? `https://image.tmdb.org/t/p/w500${path}`:null
@@ -51,4 +53,17 @@ export const fetcTopRatedMovies= ()=>{
 export const fetchMovieDetails= (movieId)=>{
     return apiCall(movieDetailsEndPoint(movieId))
 }
+
+
+
+export const fetchCreditsDetails= (movieId)=>{
+    return apiCall(movieCreditEndPoint(movieId))
+}
+
+
+export const fetchSimilerMOvies= (movieId)=>{
+    return apiCall(similerMovieEndPoint(movieId))
+}
+
+
 
